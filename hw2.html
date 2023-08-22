@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .product {
+        max-width: 250px;
+        border: 1px solid black;
+        padding: 5px;
+      }
+      .img {
+        width: 250px;
+      }
+    </style>
+    <div id="app">
+      <h3>Сортировать цены по</h3>
+      <button @click="sortMin">возрастанию</button>
+      <button @click="sortMax"> убыванию </button>
+      <div class="product" v-for="item in smartphone" :key="item.id">
+            {{item.name}} - {{item.price}}
+       
+       
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            smartphone: [
+                {id:1, name:'Samsung A9',price:25300},
+                {id:2, name:'Xiaomi Note 12',price:27100},
+                {id:3, name:'Simens A 53',price:300},
+                {id:4, name:'Nokia Luna',price:11600},
+                {id:5, name:'Iphone 13',price:125300},
+            ] 
+            ,
+          };
+        },
+        methods: {
+          sortMin() {
+              this.smartphone.sort((a,b) => a.price - b.price)
+          },
+          sortMax(){
+            this.smartphone.sort((a,b) => b.price - a.price)
+          }
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
